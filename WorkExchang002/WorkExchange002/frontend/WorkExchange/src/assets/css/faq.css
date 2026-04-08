@@ -1,0 +1,85 @@
+/* ===== FAQ 整體版面 ===== */
+.faq-page {
+  width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+.faq-banner-wrap {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.faq-banner {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* ===== 分類標題 ===== */
+.faq-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 48px 0 20px;
+  padding-left: 14px;
+  /* border-left: 6px solid #0d6efd; */
+  color: #212529;
+  font-family: 'Noto Sans TC';
+}
+/* ===== Accordion 卡片化 ===== */
+.accordion-item {
+  border: none;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+/* ===== 問題按鈕 ===== */
+.accordion-button {
+  font-weight: 700;
+  font-size: 17px;
+  padding: 22px 24px;
+  box-shadow: none;
+  background: linear-gradient(90deg, #f8f9fa, #eef3ff);
+  border: none;
+  background-color: transparent;
+  color: #1442a5
+}
+.accordion-button.collapsed {
+  background-color: transparent;
+}
+
+.accordion-button[aria-expanded="true"] {
+  background: linear-gradient(90deg, #e7f1ff, #d0e2ff);
+  color: #1442a5;
+}
+
+/* ===== 內容區 ===== */
+.accordion-body {
+  background-color: #ffffff;
+  font-size: 15px;
+  line-height: 1.9;
+  padding: 18px 22px;
+  color: #495057;
+}
+/* ===== Q 編號強調 ===== */
+.accordion-button::before {
+  content: 'Q';
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: #2965be;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+.faq-banner {
+  width: 100%; /* 滿版寬度 */
+  height: auto;
+  object-fit: contain;
+  border-radius: 14px;
+  margin-bottom: 30px;
+}

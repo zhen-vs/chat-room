@@ -1,0 +1,260 @@
+/* 高度與滾動 */
+.chat-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+  padding: 20px;
+}
+/* 聊天視窗的主體 */
+.chat-shell {
+  height: calc(100vh - 180px);
+  max-width: 1200px;
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+/* 新增：確保 row 撐開 */
+.chat-shell > .row {
+  flex: 1;
+  min-height: 0; /* 防止 flex 內容溢出 */
+}
+/* 左右兩欄都要有 min-height:0，否則 overflow 會失效  */
+.chat-shell .chat-list,
+.chat-shell section {
+  height: 100%;
+  min-height: 0;
+}
+
+/* 左欄 */
+.min-w-0 {
+  min-width: 0 !important;
+}
+/* 左欄滾動 */
+.chat-list-scroll {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden !important;
+}
+
+/* 右邊訊息區滾動 */
+.chat-body {
+  display: flex;
+  flex-direction: column-reverse;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0));
+}
+/* 送出框固定在右邊卡片下方 */
+.chat-footer {
+  flex-shrink: 0;
+}
+
+/* 聊天列表 item */
+.chat-item {
+  border-left: 0;
+  border-right: 0;
+}
+.chat-item.active {
+  background: rgba(13, 110, 253, 0.08);
+  color: inherit;
+}
+
+/* 小圓 avatar */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+/* 訊息泡泡 */
+.msg-row {
+  display: flex;
+  justify-content: flex-start;
+}
+.msg-row--mine {
+  justify-content: flex-end;
+}
+
+.msg-bubble {
+  max-width: min(520px, 85%);
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.msg-row--mine .msg-bubble {
+  background: rgba(13, 110, 253, 0.1);
+  border-color: rgba(13, 110, 253, 0.18);
+}
+
+.msg-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.45;
+}
+
+.msg-meta {
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.6;
+  text-align: right;
+}
+
+/* 黑名單視覺 */
+
+/* 讓下拉選單預設都是溫和的深灰色 */
+.dropdown-item {
+  color: #555 !important;
+  font-size: 0.9rem;
+}
+
+/* 封鎖選項：移上去才變淡紅 */
+.item-danger-hover:hover {
+  background-color: #fff5f5 !important;
+  color: #cb2431 !important;
+}
+
+/* 灰色遮罩層 */
+.blocked-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(248, 249, 250, 0.8); /* 淺灰色半透明 */
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+/* 封鎖時背景模糊 */
+.is-blurred {
+  filter: blur(2px);
+  pointer-events: none; /* 防止點擊到後方的訊息 */
+  user-select: none;
+}
+/* 讓遮罩鋪滿整個右側區域 */
+.blocked-mask-overlay {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* 半透明黑灰色 */
+  z-index: 1040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+
+/* 讓原本的內容稍微變灰階 */
+.chat-blur {
+  filter: grayscale(0.6);
+  pointer-events: none; /* 封鎖時防止點擊到後方的訊息 */
+}
+
+/* 左側房間列表置底封鎖區 */
+/* 讓區塊有滑過變色的視覺反饋 */
+.hover-bg-gray:hover {
+  background-color: #f0f0f0;
+}
+
+/* 封鎖小頭像縮小一點 */
+.avatar-sm {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 確保側邊欄固定高度且底部對齊 */
+.chat-list {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.blocked-section {
+  margin-top: auto; /* 強制推到最底部 */
+  z-index: 10;
+}
+.chat-body{
+  height: 600px;
+  overflow-y: auto;
+}
+/* RWD */
+@media (max-width: 991.98px) {
+  .chat-shell {
+    height: auto;
+    height: 100vh;
+    overflow: hidden;
+  }
+  /* 左右兩個 panel 吃滿高度 */
+  .chat-shell .chat-list,
+  .chat-shell section {
+    height: 75vh;
+    min-height: 0;
+  }
+  .chat-list-scroll {
+    max-height: none !important;
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+  }
+  .chat-mobile-topbar {
+    padding: 8px 0;
+  }
+  .chat-body {
+     display: flex;
+  flex-direction: column-reverse;
+    overflow-y: auto;
+    height: calc(100vh - 220px);
+    scroll-behavior: smooth;
+  }
+  .blocked-mask-overlay {
+    top: 45px;
+  }
+}
+
+/* 新訊息分割線 */
+/* 1. 定義外層與橫線 */
+.new-msg-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  color: gray;
+  font-size: 12px;
+}
+
+.new-msg-divider::before,
+.new-msg-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid gray;
+  opacity: 0.3;
+}
+
+/* 2. 定義中間的文字 */
+.new-msg-divider span {
+  padding: 0 15px;
+  font-weight: bold;
+}
+

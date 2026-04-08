@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="NewFolder1\**" />
+    <Compile Remove="wwwroot\uploads\Hosts\NewFolder1\**" />
+    <Compile Remove="wwwroot\uploads\NewFolder\**" />
+    <Compile Remove="wwwroot\uploads\ReviewImage\NewFolder\**" />
+    <Content Remove="NewFolder1\**" />
+    <Content Remove="wwwroot\uploads\Hosts\NewFolder1\**" />
+    <Content Remove="wwwroot\uploads\NewFolder\**" />
+    <Content Remove="wwwroot\uploads\ReviewImage\NewFolder\**" />
+    <EmbeddedResource Remove="NewFolder1\**" />
+    <EmbeddedResource Remove="wwwroot\uploads\Hosts\NewFolder1\**" />
+    <EmbeddedResource Remove="wwwroot\uploads\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\uploads\ReviewImage\NewFolder\**" />
+    <None Remove="NewFolder1\**" />
+    <None Remove="wwwroot\uploads\Hosts\NewFolder1\**" />
+    <None Remove="wwwroot\uploads\NewFolder\**" />
+    <None Remove="wwwroot\uploads\ReviewImage\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="efpt.config.json.user" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.73.0" />
+    <PackageReference Include="MailKit" Version="4.14.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.23" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.23" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.24" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.23">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.23" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\Hosts\" />
+    <Folder Include="wwwroot\uploads\Avatar\" />
+    <Folder Include="wwwroot\uploads\Resume\" />
+    <Folder Include="wwwroot\uploads\Vacancyimage\" />
+    <Folder Include="wwwroot\uploads\Resume\" />
+    <Folder Include="wwwroot\uploads\Pageimage\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ECPay.Payment.Integration">
+      <HintPath>External\ECPay.Payment.Integration.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
